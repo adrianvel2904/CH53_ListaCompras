@@ -14,7 +14,7 @@ const precioTotal = document.getElementById("precioTotal");
 let cont = 0;
 let costoTotal = 0;
 let totalProductos = 0;
-
+let datos = new Array(); //almacena un array
 
 function validarCantidad(){
     if(txtNumber.value.trim().length<=0){
@@ -72,6 +72,13 @@ btnAgregar.addEventListener("click", function(event){
                     <td> ${txtNumber.value}</td>
                     <td> ${precio}</td>
                   </tr>`;
+
+        let elemento = {
+                        "cont": cont,
+                        "nombre": txtName.value,
+                        "cantidad": txtNumber.value,
+                        "precio": precio
+                       };
         cuerpoTabla.insertAdjacentHTML("beforeend", row);
         costoTotal += precio * Number(txtNumber.value);
         precioTotal.innerText = "$" + costoTotal.toFixed(2);
